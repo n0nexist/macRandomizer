@@ -32,12 +32,12 @@ function generate_mac_address() {
 # Generate and print a random MAC address
 mac_address=$(generate_mac_address)
 
-
-echo "Setting new address: $mac_address"
-
 # Sets the new address
 sudo ifconfig $1 down
 sudo ifconfig $1 hw ether $mac_address
 sudo ifconfig $1 up
+
+# Shows the new address
+ifconfig $1 | grep ether
 
 echo "You are now anonymous in your lan ;)"
